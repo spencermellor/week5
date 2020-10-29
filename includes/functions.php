@@ -1,20 +1,15 @@
 <?php
-    require('connect.php');
+    include("connect.php"); // like a JS import statement
 
-    function getAllUsers($conn) {
-        $getUsers = 'SELECT * FROM users';
-        $runQuery = $conn->query($getUsers);
+    $query = "SELECT * FROM profData";
 
-        $result = array();
+    $runQuery = $pdo->query($query);
 
-        while($row = $runQuery->fetch(PDO::FETCH_ASSOC)) {
-            // push each row of data into our arry to make it easy to iterate over
-            $result[] = $row;
-        }
+    $result = array();
 
-        return $result;
+    while($row = $runQuery->fetchAll(PDO::FETCH_ASSOC)) {
+        $result[] = $row;
     }
 
-    function getSingleUser($conn) {
-        // run same query with a where clause
-    }
+    // return $result;
+    echo(json_encode($result));

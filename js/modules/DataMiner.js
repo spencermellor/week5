@@ -11,7 +11,7 @@
         // if we get success, then we can return back our resource
         let DataSet = await resource.json();
 
-        return datasource;
+        return DataSet[0];
     }
 
 export { fetchData };
